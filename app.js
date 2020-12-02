@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const Customer = require('./models/db')
 const { json } = require('body-parser')
 const db = require('./models/db')
+const { send } = require('process')
 
 
 app.set('view engine', 'ejs')
@@ -33,6 +34,7 @@ mongoose.connect('mongodb://localhost:27017/banking')
 
 let senderId = ''
 let recieverId = ''
+let senderBalance = 0
 
 app.get('/', (req,res) => {
     res.render('front')
@@ -54,6 +56,16 @@ app.get('/customers', (req,res) => {
 
 app.get('/customers/:id', (req,res) => {
     senderId = req.params.id
+    
+    Customer.findById(senderId, (err,sender) => {
+        if(err){
+            console.log(err)
+        }else{
+            senderBalance = sender.balance
+             console.log(senderBalance)
+        }
+    })
+    
     Customer.findById(req.params.id).exec({}, (err, foundCustomer) => {
         if(err) {
             console.log(err)
@@ -88,29 +100,31 @@ app.get('/transfer/:id', (req,res) => {
  
 app.post('/transfer', (req,res) => {
     const amount = req.body.amount
-    Customer.findById(senderId).exec({}, (err, sender) => {
-        if(err){
-            console.log(err)
-        }else{
-            if(sender.balance < amount) {
-                res.render('fail')
+    console.log(senderBalance)
+    if(parseInt(senderBalance) < parseInt(amount)){
+        res.render('fail')
+    }
+    else{
+        Customer.findById(senderId).exec({}, (err, sender) => {
+            if(err){
+                console.log(err)
             }else{
                 const newSenderBalance= sender.balance - amount
                 sender.balance = newSenderBalance
-                sender.save()   
-            } 
-        }
-    })
-    Customer.findById(recieverId).exec({}, (err, reciever) => {
-        if(err){
-            console.log(err)
-        }else{
-            const newRecieverBalance= parseInt(reciever.balance) + parseInt(amount)
-            reciever.balance = newRecieverBalance
-            reciever.save()   
-        }
-    })
-    res.render('success')
+                sender.save()      
+            }
+        })
+        Customer.findById(recieverId).exec({}, (err, reciever) => {
+            if(err){
+                console.log(err)
+            }else{
+                const newRecieverBalance= parseInt(reciever.balance) + parseInt(amount)
+                reciever.balance = newRecieverBalance
+                reciever.save()   
+            }
+        })
+        res.render('success')
+    }
 })
 
 
