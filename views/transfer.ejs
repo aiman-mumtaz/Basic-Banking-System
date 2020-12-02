@@ -1,0 +1,31 @@
+<%- include("./partials/header") %> 
+<br>
+<br>
+
+
+<div class="container">
+    <header class="jumbotron text-center">
+        <h2>SELECT CUSTOMER TO TRANSFER TO</h2>
+    </header>
+    <div class="row">
+        <% for(let customer of customers){ %> 
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail text-center rounded">
+                    <span style="color: rgb(177, 174, 174);">
+                        <i class="fas fa-user-circle fa-3x"></i>
+                    </span>
+                    <div class="caption">
+                        <h4 style="color: rgb(53, 55, 56);"><%= customer.firstName %> </h4>
+                        <p>
+                            <a href="/transfer/<%= customer._id %> " class="btn btn-primary">Transfer</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+
+
+<%- include("./partials/footer") %> 

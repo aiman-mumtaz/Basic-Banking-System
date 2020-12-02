@@ -1,0 +1,19 @@
+<%- include("./partials/header") %> 
+
+<div class="container">
+    <h1 style="text-align: center">Transfer</h1>
+    <br>
+    <!-- <div class="jumbotron rounded" style="width: 40%;  margin: 20px auto;"> -->
+        
+        <form action="/transfer" method="post"style="width: 40%;  margin: 20px auto;">
+            <div class="form-group">
+                <input class="form-control" type="number" name="amount" placeholder="Amount">
+            </div>
+            <br>
+            <div class="form-group text-center">
+                <button class="btn btn-lg btn-success">Continue</button>
+            </div>
+        </form>          
+    <!-- </div> -->
+</div>
+<%- include("./partials/footer") %> 

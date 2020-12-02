@@ -1,0 +1,32 @@
+<%- include("./partials/header") %> 
+<br>
+<br>
+
+
+<div class="container text-center">
+    <br>
+    <header class="jumbotron">
+        <h1><i class="fas fa-users"></i>VIEW ALL CUSTOMERS</h1>
+    </header>
+    <div class="row">
+        <% for(let customer of customers){ %> 
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail text-center rounded">
+                    <span style="color: rgb(177, 174, 174);"> 
+                        <i class="fas fa-user-circle fa-3x"></i>
+                    </span>
+                    <div class="caption">
+                        <h4><%= customer.firstName %> </h4>
+                        <p>
+                            <a href="/customers/<%= customer._id %> " class="btn btn-primary">View</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+
+
+<%- include("./partials/footer") %> 

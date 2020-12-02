@@ -1,0 +1,23 @@
+<%- include("./partials/header") %> 
+
+
+<div class="container ">
+    <br>
+    <h1 class="text-center">Hello <%= customer.firstName %></h1> 
+        <hr>
+        
+    <div class="jumbotron rounded" style="width: 40%; margin: 20px auto;">
+        
+        <div>
+            <h4>Name: <%= customer.firstName %> <%= customer.lastName %> </h4>
+            <h4>Email Address: <%= customer.email %>  </h4>
+            <h4>Mobile Number: <%= customer.mobile %> </h4>
+            <h4>Account Balance: <%= customer.balance %>  </h4>
+        </div>
+    </div>
+    <div class="text-center">
+        <a href="/transfer" class="btn btn-success ">Transfer Money</a>
+    </div>
+</div>
+
+<%- include("./partials/footer") %> 

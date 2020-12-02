@@ -1,0 +1,38 @@
+body,html {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	align-items: center;
+	background-image: url('https://images.unsplash.com/photo-1556155092-490a1ba16284?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8b25saW5lJTIwdHJhbnNhY3Rpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.jumbotron {
+	min-height: 100%; 
+	background-color: white ;
+	opacity: 0.6;
+	/* rgba(140, 150, 160, 0.815) */
+  	align-items: center;
+}
+
+
+.thumbnail img {
+	margin-top: 5px;
+    width: 45%
+}
+
+.thumbnail {
+	padding: 10px 10px;
+	border: solid 1px rgb(185, 183, 183);
+	margin: 5px;
+}
+
+.thumbnail .caption-full {
+	padding: 9px;
+
+}
