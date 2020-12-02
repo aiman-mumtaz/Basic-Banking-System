@@ -1,5 +1,5 @@
 # Basic-Banking-System
-    Web Development Task 1 for The Sparks Foundation GRIP
+    A simple dynamic website handling transfer of money between different users
 
 
 Clone or download this repository
