@@ -35,9 +35,12 @@ let senderId = ''
 let recieverId = ''
 
 app.get('/', (req,res) => {
-    res.render('home')
+    res.render('front')
 })
 
+app.get('/home', (req,res) => {
+    res.render('home')
+})
 app.get('/customers', (req,res) => {
     Customer.find({}, (err, allCustomers) => {
         if(err){
